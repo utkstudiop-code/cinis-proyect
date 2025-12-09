@@ -17,6 +17,7 @@
 
         :root {
             --primary-color: #dc2626;
+            --nav-height: 64px;
             --dark-bg: #000000;
             --light-text: #ffffff;
             --gray-text: #d1d5db;
@@ -34,6 +35,7 @@
             color: var(--light-text);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: var(--nav-height);
         }
 
         /* Navegación */
@@ -42,27 +44,29 @@
             top: 0;
             left: 0;
             right: 0;
+            height: var(--nav-height);
             z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(127, 29, 29, 0.3);
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(127, 29, 29, 0.25);
         }
 
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 1.5rem;
+            padding: 0 1rem;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: var(--light-text);
             cursor: pointer;
-            font-family: 'Creepster', cursive;
+            font-family: 'Times New Roman', Times, serif;
             transition: color 0.3s ease;
             z-index: 1001;
         }
@@ -90,6 +94,7 @@
             cursor: pointer;
             transition: color 0.3s ease;
             padding: 0.5rem 1rem;
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .nav-menu li button:hover {
@@ -108,10 +113,11 @@
         }
 
         .hamburger span {
-            width: 1.5rem;
-            height: 0.2rem;
+            width: 1.2rem;
+            height: 0.18rem;
             background-color: var(--light-text);
             transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         .hamburger.active span:nth-child(1) {
@@ -142,6 +148,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-in-out;
+            
         }
 
         .mobile-menu.active {
@@ -154,6 +161,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            
         }
 
         .mobile-menu li button {
@@ -167,6 +175,7 @@
             text-align: left;
             padding: 0.75rem;
             border-bottom: 1px solid rgba(127, 29, 29, 0.2);
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .mobile-menu li button:hover {
@@ -214,6 +223,8 @@
             font-family: 'Creepster', cursive;
             text-shadow: 0 0 30px rgba(220, 38, 38, 0.8);
             margin-bottom: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            
         }
 
         .hero-subtitle {
@@ -221,6 +232,8 @@
             color: var(--gray-text);
             max-width: 800px;
             margin: 0 auto;
+            font-family: 'Times New Roman', Times, serif;
+
         }
 
         /* Sección Comic */
@@ -235,13 +248,15 @@
             text-align: center;
             margin-bottom: 4rem;
             color: var(--primary-color);
-            font-family: 'Creepster', cursive;
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .comic-container {
             max-width: 900px;
             width: 100%;
             margin: 0 auto;
+            font-family: 'Times New Roman', Times, serif;
+
         }
 
         .comic-card {
@@ -255,16 +270,19 @@
         .comic-preview {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;
-            background-color: #000;
+            padding-bottom: 150%; /* aumentado: más alto para ver más contenido vertical */
+            min-height: 360px; /* garantizar tamaño mínimo en pantallas medianas/grandes */
+            background-color: transparent; /* evitar bandas negras innecesarias */
             overflow: hidden;
         }
+
+        
 
         .comic-preview img {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 110%;
             height: 100%;
             object-fit: cover;
             opacity: 0.8;
@@ -301,7 +319,7 @@
         }
 
         .comic-description {
-            padding: 2rem;
+            padding: 1.10rem; /* reducido para quitar espacio sobrante bajo la imagen */
             text-align: center;
             color: var(--gray-text);
             font-size: 1rem;
@@ -330,6 +348,8 @@
             backdrop-filter: blur(10px);
             cursor: pointer;
             transition: all 0.3s ease;
+            
+            
         }
 
         .video-card:hover {
@@ -339,8 +359,9 @@
         .video-thumbnail {
             position: relative;
             width: 100%;
-            padding-bottom: 133.33%;
-            background-color: #000;
+            padding-bottom: 145%; /* mayor altura para mostrar más del arte del anuncio */
+            min-height: 320px; /* asegurar que las miniaturas no queden demasiado pequeñas */
+            background-color: transparent; /* evitar bandas negras visibles debajo */
             overflow: hidden;
         }
 
@@ -353,11 +374,25 @@
             object-fit: cover;
         }
 
+        /* Ajustes para que el botón rojo quede justo al final de la imagen */
+        .video-label {
+            padding: 0.4rem; /* mínimo */
+            text-align: center;
+        }
+
+        .video-label button {
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 0.5rem 0.75rem;
+        }
+
         .video-overlay {
             position: absolute;
             inset: 0;
             background-color: rgba(0, 0, 0, 0.4);
             transition: background-color 0.3s ease;
+            
         }
 
         .video-card:hover .video-overlay {
@@ -367,10 +402,12 @@
         .video-label {
             padding: 1rem;
             text-align: center;
+            
         }
 
         .video-label button {
             background-color: #991b1b;
+            
             color: white;
             border: none;
             padding: 0.75rem 2rem;
@@ -379,10 +416,14 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             width: 100%;
+            font-family: 'Times New Roman', Times, serif;
+
         }
 
         .video-label button:hover {
             background-color: #7f1d1d;
+            
+            
         }
 
         /* Sección Comentarios */
@@ -394,7 +435,7 @@
         .comments-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1rem; /* reducir espacio entre tarjetas */
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
@@ -414,13 +455,26 @@
 
         .comment-card:hover {
             border-color: var(--primary-color);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        .comment-image {
+        /* Miniatura en comentarios: forzar área igual y recortar si es necesario */
+        .comment-thumb {
+            position: relative;
             width: 100%;
-            aspect-ratio: 1;
+            padding-bottom: 100%; /* cuadrado */
+            min-height: 260px; /* thumbnails más grandes para mejor visibilidad */
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .comment-thumb img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         /* Modal de Video */
@@ -570,6 +624,21 @@
             .comments-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Ajustes responsivos: reducir alturas en pantallas pequeñas */
+            .comic-preview {
+                padding-bottom: 66.66%;
+                min-height: 220px;
+            }
+
+            .video-thumbnail {
+                padding-bottom: 75%;
+                min-height: 180px;
+            }
+
+            .comment-thumb {
+                min-height: 140px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -601,6 +670,40 @@
         section {
             animation: fadeIn 0.6s ease-out;
         }
+
+        /* Centerar imágenes y espaciado (cambios mínimos) */
+        img[src^="img/"] {
+            display: block;
+            margin: 16px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .comic-preview img,
+        .video-thumbnail img,
+        .comments-grid img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center bottom; /* mostrar la parte baja de la imagen */
+        }
+
+        .comic-preview svg,
+        .video-thumbnail svg,
+        .comments-grid svg {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: auto;
+        }
+
+        .video-card,
+        .comment-card {
+            margin-bottom: 12px;
+        }
+
     </style>
 </head>
 <body>
@@ -646,21 +749,11 @@
 
     <!-- Sección Comic Interactivo -->
     <section id="cinis">
-        <h2 class="section-title">comic interactivo</h2>
+        <h2 class="section-title">Comic Interactivo</h2>
         <div class="comic-container">
             <div class="comic-card">
                 <div class="comic-preview">
-                    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="throne-glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:0" />
-                            </radialGradient>
-                        </defs>
-                        <rect width="1200" height="600" fill="#000000"/>
-                        <circle cx="600" cy="300" r="300" fill="url(#throne-glow)"/>
-                        <path d="M600,150 L700,250 L650,250 L650,450 L550,450 L550,250 L500,250 Z" fill="#dc2626" opacity="0.7"/>
-                    </svg>
+                    <img src="img/spot.jpeg" alt="Spot" />
                     <button class="play-button" type="button" onclick="openVideo('zYNTjD_BI_U')">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8 5v14l11-7z"/>
@@ -679,37 +772,19 @@
         <div style="width: 100%;">
             <h2 class="section-title">Publicidad</h2>
             <div class="videos-grid">
-                <div class="video-card" onclick="openCloudVideo('https://res.cloudinary.com/dmzxm9hsz/video/upload/v1764263599/11_espaciado_oj4fhe.mp4')">
+                <div class="video-card" onclick="openVideo('MIvwHocDHGg')">
                     <div class="video-thumbnail">
-                        <svg viewBox="0 0 300 400" xmlns="https://res.cloudinary.com/dmzxm9hsz/video/upload/v1764263599/11_espaciado_oj4fhe.mp4">
-                            <defs>
-                                <linearGradient id="making-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.6" />
-                                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="400" fill="url(#making-grad)"/>
-                            <text x="150" y="200" font-size="24" fill="white" text-anchor="middle" font-family="Arial">MAKING OFF</text>
-                        </svg>
+                        <img src="img/arte.jpeg" alt="Arte">
                         <div class="video-overlay"></div>
                     </div>
                     <div class="video-label">
-                        <button type="button" onclick="openCloudVideo('https://res.cloudinary.com/dmzxm9hsz/video/upload/v1764263599/11_espaciado_oj4fhe.mp4')">MAKING OFF</button>
+                        <button type="button" onclick="openVideo('MIvwHocDHGg')">ARTE</button>
                     </div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ')">
+                <div class="video-card" onclick="openVideo('MQ_ZqPpdHio')">
                     <div class="video-thumbnail">
-                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="spot-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.6" />
-                                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="400" fill="url(#spot-grad)"/>
-                            <text x="150" y="200" font-size="24" fill="white" text-anchor="middle" font-family="Arial">SPOT</text>
-                        </svg>
+                        <img src="img/fondo.jpeg" alt="SPOT">
                         <div class="video-overlay"></div>
                     </div>
                     <div class="video-label">
@@ -717,18 +792,9 @@
                     </div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ')">
+                <div class="video-card" onclick="openVideo('VnLSpq9AU5A')">
                     <div class="video-thumbnail">
-                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="teaser-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.6" />
-                                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="400" fill="url(#teaser-grad)"/>
-                            <text x="150" y="200" font-size="24" fill="white" text-anchor="middle" font-family="Arial">TEASER</text>
-                        </svg>
+                        <img src="img/gordo.jpeg" alt="TEASER">
                         <div class="video-overlay"></div>
                     </div>
                     <div class="video-label">
@@ -742,45 +808,24 @@
     <!-- Sección Comentarios -->
     <section id="comentarios">
         <div style="width: 100%;">
-            <h2 class="section-title">comentarios</h2>
+            <h2 class="section-title">Comentarios</h2>
             <div class="comments-grid">
-                <a href="https://instagram.com/p/example1" target="_blank" rel="noopener noreferrer" class="comment-card">
-                    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="comment-image">
-                        <defs>
-                            <radialGradient id="comment-grad1" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        <rect width="300" height="300" fill="url(#comment-grad1)"/>
-                        <circle cx="150" cy="150" r="50" fill="white" opacity="0.3"/>
-                    </svg>
+                <a href="https://www.instagram.com/p/DRlCR5xjutw/" target="_blank" rel="noopener noreferrer" class="comment-card">
+                    <div class="comment-thumb">
+                        <img src="img/cap1.png" alt="Comentario 1">
+                    </div>
                 </a>
 
-                <a href="https://instagram.com/p/example2" target="_blank" rel="noopener noreferrer" class="comment-card">
-                    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="comment-image">
-                        <defs>
-                            <radialGradient id="comment-grad2" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.7" />
-                                <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        <rect width="300" height="300" fill="url(#comment-grad2)"/>
-                        <rect x="75" y="75" width="150" height="150" fill="white" opacity="0.2"/>
-                    </svg>
+                <a href="https://www.instagram.com/p/DQvPAkCjrt3/" target="_blank" rel="noopener noreferrer" class="comment-card">
+                    <div class="comment-thumb">
+                        <img src="img/cap2.png" alt="Comentario 2">
+                    </div>
                 </a>
 
-                <a href="https://instagram.com/p/example3" target="_blank" rel="noopener noreferrer" class="comment-card">
-                    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="comment-image">
-                        <defs>
-                            <radialGradient id="comment-grad3" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" style="stop-color:rgb(220,38,38);stop-opacity:0.75" />
-                                <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        <rect width="300" height="300" fill="url(#comment-grad3)"/>
-                        <polygon points="150,50 250,250 50,250" fill="white" opacity="0.2"/>
-                    </svg>
+                <a href="https://www.instagram.com/p/DRav9mqjmVS/?img_index=1" target="_blank" rel="noopener noreferrer" class="comment-card">
+                    <div class="comment-thumb">
+                        <img src="img/cap3.png" alt="Comentario 3">
+                    </div>
                 </a>
             </div>
         </div>
